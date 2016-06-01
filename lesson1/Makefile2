@@ -1,0 +1,44 @@
+CXXFLAGS =	-pipe -O2 -std=c++11
+#test: CXXFLAGS += -g -Wall
+
+OBJS =	APlusB.o
+
+LIBS = -L/opt/gtest/lib -lgtest -lgtest_main -lpthread
+INCLUDES = -I/opt/gtest/include
+
+TARGET =	
+all: TARGET := APlusB
+test: TARGET := APlusB
+#test: TARGET := APlusB_test
+
+RELEASE_DIR = ./Release
+TEST_DIR = ./Test
+
+RM = rm -rf
+MKDIR = mkdir -p
+
+OUT_DIR = 
+all: OUT_DIR := $(RELEASE_DIR)
+all: $(shell $(MKDIR) $(RELEASE_DIR))
+
+test: OUT_DIR := $(TEST_DIR)
+test: $(shell $(MKDIR) $(TEST_DIR))
+
+#TARGET = $(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(OBJS) $(LIBS) $(INCLUDES)
+
+all: $(OBJS)	
+	$(TARGET)
+
+test: $(OBJS)	
+	$(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(OBJS) $(LIBS) $(INCLUDES)
+
+clean:
+	$(RM) $(RELEASE_DIR) $(TEST_DIR)
+	
+APlusB.o: APlusB.cpp
+	$(CXX) $(CXXFLAGS) -c APlusB.cpp -o $(OUT_DIR)/APlusB.o
+
+#APlusB_test.o: ./test/APlusB_test.cpp
+#	@echo 123
+#	$(CXX) -I/opt/gtest/include -c ./tests1/APlusB_test.cpp -o $(OUT_DIR)/APlusB_test.o
+	
