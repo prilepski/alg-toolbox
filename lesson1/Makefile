@@ -30,6 +30,7 @@ all: $(EXEC)
 
 test: $(OBJS) $(TEST_OBJS)
 	$(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(TEST_OBJS) $(LIBS)
+	@$(OUT_DIR)/$(TARGET)
 
 
 clean:
