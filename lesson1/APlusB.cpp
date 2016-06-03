@@ -6,7 +6,7 @@ int main(){
 	std::cout << "Application sums up 2 integer numbers\n";
 	std::cout << "Numbers need to be between 0 and 9\n";
 	std::cout << "Enter 1st integer: ";
-	ab.setB(std::cin);
+	ab.setA(std::cin);
 	std::cout << "Enter 2nd integer: ";
 	ab.setB(std::cin);
 

@@ -25,6 +25,14 @@ class APlusB{
 		else
 			return nValue;
 	}
+
+	int validateInt(int num){
+		if (num < MIN_NUM || num > MAX_NUM)
+			return ERR_NUM;
+		else
+			return num;
+	}
+
 public:
 	static const short ERR_NUM = -1;
 	static const short MIN_NUM = 0;
@@ -48,13 +56,6 @@ public:
 		return setB(ConvertToInt(in));
 	}
 
-	int validateInt(int num){
-		if (num < MIN_NUM || num > MAX_NUM)
-			return ERR_NUM;
-		else
-			return num;
-	}
-
 	int getA(){
 		return m_A;
 	}
@@ -64,7 +65,7 @@ public:
 	}
 
 	int sumAB(){
-		if (validateInt(m_A) != ERR_NUM || validateInt(m_B) != ERR_NUM)
+		if (validateInt(m_A) != ERR_NUM && validateInt(m_B) != ERR_NUM)
 			return m_A + m_B;
 		else
 			return ERR_NUM;
