@@ -1,7 +1,8 @@
-CXXFLAGS =	-pipe -O2 -std=c++11
-test: CXXFLAGS += -g -Wall
+CXXFLAGS =	-pipe -std=c++11
+test: CXXFLAGS += -g -O0 -Wall
+all: CXXFLAGS += -O2
 
-OBJS = 
+OBJS =
 TEST_OBJS = APlusB_test.o
 EXEC = APlusB.o
 
@@ -16,7 +17,7 @@ TEST_DIR = ./Test
 RM = rm -rf
 MKDIR = mkdir -p
 
-OUT_DIR = 
+OUT_DIR =
 all: OUT_DIR := $(RELEASE_DIR)
 all: $(shell $(MKDIR) $(RELEASE_DIR))
 
@@ -25,16 +26,17 @@ test: $(shell $(MKDIR) $(TEST_DIR))
 
 #$TARGET = $(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(OBJS) $(LIBS) $(INCLUDES)
 
-all: $(EXEC) 
+all: $(EXEC)
 	$(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(EXEC)
 
 test: $(OBJS) $(TEST_OBJS)
 	$(CXX) -o $(OUT_DIR)/$(TARGET) $(OUT_DIR)/$(TEST_OBJS) $(LIBS)
+	@$(OUT_DIR)/$(TARGET)
 
 
 clean:
 	$(RM) $(RELEASE_DIR) $(TEST_DIR)
-	
+
 APlusB.o: APlusB.cpp
 	$(CXX) $(CXXFLAGS) -c APlusB.cpp -o $(OUT_DIR)/APlusB.o
 
