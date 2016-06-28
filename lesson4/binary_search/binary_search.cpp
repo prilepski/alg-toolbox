@@ -4,7 +4,7 @@
 
 using std::vector;
 
-int binary_search(const vector<long long> &a, long long x) {
+long long binary_search(const vector<long long> &a, long long x) {
   long long left = 0, right = (long long)a.size() - 1;
   long long probe = 0;
   for (;;){
@@ -23,7 +23,7 @@ int binary_search(const vector<long long> &a, long long x) {
   }
 }
 
-int linear_search(const vector<int> &a, int x) {
+long long linear_search(const vector<long long> &a, long long x) {
   for (size_t i = 0; i < a.size(); ++i) {
     if (a[i] == x) return i;
   }
